@@ -1,0 +1,10 @@
+---
+# tasks file for roles/plank
+- name: add plank ppa
+  apt_repository:
+    repo: ppa:ricotz/docky
+    update_cache: yes
+- name: install plank
+  apt:
+    name: plank
+    state: present

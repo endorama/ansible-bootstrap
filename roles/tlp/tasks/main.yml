@@ -1,0 +1,30 @@
+---
+# tasks file for roles/tlp
+- name: install tlp repository
+  apt_repository:
+    repo: 'ppa:linrunner/tlp'
+    state: present
+    update_cache: yes
+
+- name: install tlp
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - tlp
+    - tlp-rdw
+
+- name: start tlp service
+  service:
+    name: tlp
+    state: started
+
+- name: install smartmontools
+  apt:
+    name: smartmontools
+    state: present
+
+- name: install ethtool
+  apt:
+    name: ethtool
+    state: present

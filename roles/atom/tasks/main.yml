@@ -1,0 +1,11 @@
+---
+# tasks file for roles/atom
+- name: add atom ppa
+  apt_repository:
+    repo: ppa:webupd8team/atom
+    update_cache: yes
+
+- name: install atom
+  apt:
+    name: atom
+    state: present

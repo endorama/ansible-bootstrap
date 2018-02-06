@@ -1,0 +1,7 @@
+---
+# tasks file for roles/fonts
+- name: install fonts
+  apt:
+    name: "{{item.package}}"
+    state: present
+  with_items: "{{fonts}}"
