@@ -1,0 +1,46 @@
+---
+# tasks file for roles/indicators
+- name: install indicator-multiload
+  apt:
+    name: indicator-multiload
+    state: present
+
+- name: install caffeine
+  apt:
+    name: caffeine
+    state: present
+
+- name: install indicator-cpufreq
+  apt:
+    name: indicator-cpufreq
+    state: present
+
+- name: install redshift-gtk
+  apt:
+    name: redshift-gtk
+    state: present
+
+- name: install indicator-notifications ppa
+  apt_repository:
+    repo: 'ppa:jconti/recent-notifications'
+    state: present
+    update_cache: yes
+- name: install indicator-notifications
+  apt:
+    name: indicator-notifications
+    state: present
+
+- name: install indicator-brightness ppa
+  apt_repository:
+    repo: 'ppa:indicator-brightness/ppa'
+    state: present
+    update_cache: yes
+- name: install indicator-brightness
+  apt:
+    name: indicator-brightness
+    state: present
+
+- name: install clipit
+  apt:
+    name: clipit
+    state: present
