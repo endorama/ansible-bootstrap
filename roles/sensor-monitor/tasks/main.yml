@@ -1,0 +1,10 @@
+---
+# tasks file for roles/sensor-monitor
+- name: install lm-sensors, hddtemp, psensor
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - lm-sensors
+    - hddtemp
+    - psensor
