@@ -1,0 +1,11 @@
+---
+# tasks file for roles/albert
+- command: wget -nv -O Release.key 'https://build.opensuse.org/projects/home:manuelschneid3r/public_key'
+- command: sudo apt-key add - < Release.key
+- apt_repository:
+    repo: "deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_16.04/ /"
+    state: present
+    update_cache: yes
+- apt:
+    name: albert
+    state: present
