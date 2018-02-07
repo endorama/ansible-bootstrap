@@ -1,4 +1,6 @@
 ---
+- include: common.yml
+
 - hosts: laptop
   become: yes
   # gather_facts: no
