@@ -1,0 +1,9 @@
+---
+# tasks file for roles/hibernate
+- name: Add configuration file for hibernation
+  template:
+    src: com.ubuntu.enable-hibernate.pkla.j2
+    dest: /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
+    owner: root
+    group: root
+    mode: 0644
