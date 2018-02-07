@@ -9,4 +9,4 @@ cd "$(dirname "$0")/.."
 
 script/bootstrap
 
-ansible-playbook -i inventory "$(hostname).yml" -K
+script/run $(hostname)
