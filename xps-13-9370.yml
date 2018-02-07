@@ -9,3 +9,4 @@
     - name: fonts
     # - name: plank
     - name: tlp
+    - name: hibernate
