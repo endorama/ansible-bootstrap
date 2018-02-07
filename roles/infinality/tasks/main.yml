@@ -1,0 +1,12 @@
+---
+# tasks file for roles/infinality
+- apt_repository:
+    repo: ppa:no1wantdthisname/ppa
+    state: present
+    update_cache: yes
+- apt:
+    upgrade: safe
+    only_upgrade: yes
+- apt:
+    name: fontconfig-infinality
+    state: present
