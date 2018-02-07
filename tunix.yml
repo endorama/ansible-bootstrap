@@ -1,5 +1,5 @@
 ---
-- include: common.yml
+- import_playbook: common.yml
 
 - hosts: laptop
   become: yes
@@ -9,3 +9,6 @@
     - name: fonts
     - name: plank
     - name: tlp
+    - name: indicators
+    - name: infinality
+    - name: sensor-monitor
