@@ -1,0 +1,6 @@
+---
+# defaults file for roles/minikube-driver-kvm2
+# can be latest, vX.Y.Z
+minikube_kvm2_driver_version: latest
+# https://storage.googleapis.com/minikube/releases/v0.24.0/docker-machine-driver-kvm2
+minikube_kvm2_driver_download_url: https://storage.googleapis.com/minikube/releases/{{minikube_kvm2_driver_version}}/docker-machine-driver-kvm2

@@ -1,0 +1,7 @@
+---
+# tasks file for roles/minikube-driver-kvm2
+- name: download kvm2 minikube driver
+  get_url:
+    url: "{{minikube_kvm2_driver_download_url}}"
+    dest: /usr/local/bin/docker-machine-driver-kvm2
+    mode: 0775
