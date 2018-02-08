@@ -1,13 +1,13 @@
 [all]
 tunix		ansible_connection=local
-XPS-13-9370	ansible_connection=local
+xps-13-9370	ansible_connection=local
 
 [laptop]
 tunix
-XPS-13-9370
+xps-13-9370
 
 [personal]
 tunix
 
 [work]
-XPS-13-9370
+xps-13-9370
