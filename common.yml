@@ -1,7 +1,7 @@
 ---
 - hosts: all
   become: yes
-  gather_facts: smart
+  gather_facts: yes
 
   tasks:
   - name: Install common dependencies
