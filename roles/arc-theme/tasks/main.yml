@@ -1,0 +1,10 @@
+---
+# tasks file for roles/arc-theme
+- name: add arc-theme soft-fork ppa
+  apt_repository:
+    repo: ppa:fossfreedom/arc-gtk-theme-daily
+    update_cache: yes
+- name: install arc-theme
+  apt:
+    name: arc-theme
+    state: present
