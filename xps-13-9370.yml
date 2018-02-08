@@ -10,3 +10,7 @@
     # - name: plank
     - name: tlp
     - name: hibernate
+    - name: arc-theme
+    - name: moka-icon-theme
+    - name: kvm
+    - name: docker
