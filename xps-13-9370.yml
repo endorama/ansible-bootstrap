@@ -14,3 +14,4 @@
     - name: moka-icon-theme
     - name: kvm
     - name: docker
+    - name: indicators
