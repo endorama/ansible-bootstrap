@@ -8,3 +8,10 @@
   apt:
     name: arc-theme
     state: present
+
+- stat:
+    path: /usr/share/icons/Arc
+  register: arc_icon_theme_folder
+
+- include: arc-icon-theme.yml
+  when: arc_icon_theme_folder.stat.exists == False

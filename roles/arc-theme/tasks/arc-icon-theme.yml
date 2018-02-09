@@ -1,0 +1,8 @@
+---
+- name: get arc-icon-theme
+  git:
+    repo: https://github.com/horst3180/arc-icon-theme.git
+    dest: /tmp/arc-icon-theme
+
+- name: install arc-icon-theme
+  shell: mv /tmp/arc-icon-theme/Arc /usr/share/icons/Arc
