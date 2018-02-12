@@ -26,7 +26,6 @@ action=$1
 backup_file="gsettings.csv"
 
 if [[ $action == "export" ]]; then
-	echo "gsetting key, value" > $backup_file
 	for idx in ${!array[*]}; do
 		setting=${array[$idx]}
 		echo "exporting $setting"
@@ -34,5 +33,12 @@ if [[ $action == "export" ]]; then
 	done
 	echo "gsettings.csv file created"
 elif [[ $action == "import" ]]; then
-	echo "asd"
+	# while IFS='' read -r line || [[ -n "$line" ]]; do
+	#     echo "Text read from file: $line"
+	# done < "$backup_file"
+	while IFS=, read -r setting value
+	do
+	    echo "importing $setting value $value"
+	    $(gsettings set $setting $value)
+	done < "$backup_file"
 fi

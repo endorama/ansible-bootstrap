@@ -1,4 +1,3 @@
-gsetting key, value
 org.gnome.desktop.interface clock-format,'24h'
 org.gnome.desktop.wm.keybindings begin-resize,['<Super>r']
 org.gnome.desktop.wm.keybindings maximize,['<Control><Super>Up']
