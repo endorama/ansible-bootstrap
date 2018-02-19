@@ -1,0 +1,11 @@
+---
+# tasks file for roles/inotify-watchers
+
+- name: increase inotify file watch limit
+  lineinfile:
+    path: /etc/sysctl.conf
+    line: fs.inotify.max_user_watches=524288
+    state: present
+
+- name: apply inotify change
+  shell: sysctl -p
