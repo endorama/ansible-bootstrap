@@ -9,7 +9,7 @@
     - name: fonts
     # - name: plank
     - name: tlp
-    - name: hibernate
+    # - name: hibernate # DOES NOT WORK!
     - name: arc-theme
     - name: moka-icon-theme
     - name: kvm
