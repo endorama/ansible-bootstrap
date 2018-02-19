@@ -16,3 +16,4 @@
     - name: docker
     - name: indicators
     # - name: minikube-driver-kvm2 # please before make it idempotent
+    - name: chromium

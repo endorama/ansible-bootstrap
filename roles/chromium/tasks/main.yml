@@ -1,0 +1,14 @@
+---
+# tasks file for roles/chromium
+- name: install chromium-browser
+  apt:
+    name: chromium-browser
+    state: present
+
+- name: install pepperflashplugin-nonfree package
+  apt:
+    name: pepperflashplugin-nonfree
+    state: present
+
+- name: update pepperflashplugin-nonfree
+  shell: update-pepperflashplugin-nonfree --install
