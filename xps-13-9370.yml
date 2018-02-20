@@ -18,3 +18,7 @@
     # - name: minikube-driver-kvm2 # please before make it idempotent
     - name: chromium
     - name: inotify-watchers
+
+  tasks:
+    - name: install tmuxinator
+      command: gem install tmuxinator
