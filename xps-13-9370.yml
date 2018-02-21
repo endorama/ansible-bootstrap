@@ -18,6 +18,7 @@
     # - name: minikube-driver-kvm2 # please before make it idempotent
     - name: chromium
     - name: inotify-watchers
+    - name: virtualbox
 
   tasks:
     - name: install tmuxinator
