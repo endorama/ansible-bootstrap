@@ -1,0 +1,20 @@
+---
+# tasks file for roles/pritunl-client
+
+- name: add pritunl apt key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 7568D9BB55FF9E5287D586017AE645C0CF8E292A
+    state: present
+
+- name: add pritunl repo
+  apt_repository:
+    repo: deb http://repo.pritunl.com/stable/apt xenial main
+    state: present
+    update_cache: yes
+
+
+- name: install pritunl
+  apt:
+    package: pritunl-client-gtk
+    state: present

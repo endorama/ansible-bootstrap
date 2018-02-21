@@ -19,6 +19,7 @@
     - name: chromium
     - name: inotify-watchers
     - name: virtualbox
+    - name: pritunl-client
 
   tasks:
     - name: install tmuxinator
