@@ -16,3 +16,5 @@
     - jq
     - nmap
     - ack-grep
+    - traceroute
+    - xsel # support pbcopy
