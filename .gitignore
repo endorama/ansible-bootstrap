@@ -1,1 +1,4 @@
 *.retry
+roles/geerlingguy.composer/
+roles/geerlingguy.php-versions/
+roles/geerlingguy.php/

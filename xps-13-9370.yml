@@ -5,6 +5,14 @@
   become: yes
   gather_facts: smart
 
+  vars_files:
+    - secret_vars/xps-13-9370.yaml
+
+  vars:
+    php_version: '7.1'
+    php_enable_webserver: false
+    composer_home_path: '/usr/local/composer'
+
   roles:
     - name: fonts
     # - name: plank
@@ -20,6 +28,9 @@
     - name: inotify-watchers
     - name: virtualbox
     - name: pritunl-client
+    - name: geerlingguy.php-versions
+    - name: geerlingguy.php
+    - name: geerlingguy.composer
 
   tasks:
     - name: install tmuxinator
