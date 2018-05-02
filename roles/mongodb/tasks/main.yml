@@ -1,0 +1,42 @@
+---
+# tasks file for roles/mongodb
+
+# https://docs.mongodb.com/master/tutorial/install-mongodb-on-ubuntu/
+
+- name: add mongodb key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+- name: add mongodb repo
+  apt_repository:
+    repo: deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.6 multiverse
+    update_cache: yes
+- name: install mongodb community (full)
+  apt:
+    name: mongodb-org
+    state: present
+  when: mongodb__full_install
+
+- name: install mongodb community server 
+  apt:
+    name: mongodb-org-server
+    state: present
+  when: not mongodb__full_install and mongodb__server
+
+- name: install mongodb community deamon
+  apt:
+    name: mongodb-org
+    state: present
+  when: not mongodb__full_install and mongodb__mongos
+
+- name: install mongodb community shell
+  apt:
+    name: mongodb-org-shell
+    state: present
+  when: not mongodb__full_install and mongodb__shell
+
+- name: install mongodb community tools
+  apt:
+    name: mongodb-org-tools
+    state: present
+  when: not mongodb__full_install and mongodb__tools

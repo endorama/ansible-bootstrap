@@ -1,0 +1,8 @@
+---
+# defaults file for roles/mongodb
+
+mongodb__full_install: no
+mongodb__server: no
+mongodb__mongos: no
+mongodb__shell: yes
+mongodb__tools: yes
