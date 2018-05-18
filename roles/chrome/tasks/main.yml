@@ -1,0 +1,17 @@
+---
+# tasks file for roles/chrome
+
+- name: add apt key
+  apt_key:
+    url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+    state: present
+
+- name: add repo
+  apt_repository:
+    repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+    state: present
+    filename: google-chrome
+
+- name: install
+  apt:
+    name: google-chrome-stable

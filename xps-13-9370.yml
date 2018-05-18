@@ -33,6 +33,7 @@
     - name: geerlingguy.php
     - name: geerlingguy.composer
     - name: mongodb
+    - name: chrome
 
   tasks:
     - name: install tmuxinator
