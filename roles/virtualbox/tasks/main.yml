@@ -16,3 +16,10 @@
   apt:
     name: virtualbox
     state: present
+  when: virtualbox_package_version == "meta"
+
+- name: install virtualbox
+  apt:
+    name: virtualbox-{{virtualbox_package_version}}
+    state: present
+  when: virtualbox_package_version != "meta"
