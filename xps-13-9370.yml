@@ -27,6 +27,7 @@
     - name: chromium
     - name: inotify-watchers
     - name: virtualbox
+      virtualbox_package_version: "5.2"
     - name: pritunl-client
     - name: geerlingguy.php-versions
     - name: geerlingguy.php
