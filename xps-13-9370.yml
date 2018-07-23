@@ -39,3 +39,16 @@
   tasks:
     - name: install tmuxinator
       command: gem install tmuxinator
+    - name: fix bluetooth suspend issue
+      copy:
+        dest: /lib/systemd/system-sleep/bluetooth-issue
+        mode: 0755
+        content: |
+          #!/bin/sh
+          # https://bugs.launchpad.net/dell-sputnik/+bug/1766825/comments/26
+          if [ "$1" = "pre" ]; then
+            systemctl stop bluetooth && rmmod btusb
+          elif [ "$1" = "post" ]; then
+            modprobe btusb && systemctl start bluetooth
+          fi
+
