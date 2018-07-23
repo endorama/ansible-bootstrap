@@ -1,0 +1,12 @@
+---
+# tasks file for roles/dbeaver
+
+- name: add dbeaver ppa
+  apt_repository:
+    repo: ppa:serge-rider/dbeaver-ce
+    update_cache: yes
+
+- name: install dbeaver
+  apt:
+    name: dbeaver-ce
+    state: present

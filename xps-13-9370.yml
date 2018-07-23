@@ -34,6 +34,7 @@
     - name: geerlingguy.composer
     - name: mongodb
     - name: chrome
+    - name: dbeaver
 
   tasks:
     - name: install tmuxinator
