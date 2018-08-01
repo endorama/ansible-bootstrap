@@ -39,6 +39,12 @@
   tasks:
     - name: install tmuxinator
       command: gem install tmuxinator
+    - name: install pgcli # https://github.com/dbcli/pgcli
+      pip:
+        name: pgcli
+    - name: install mycli # https://github.com/dbcli/mycli
+      pip:
+        name: mycli
     - name: fix bluetooth suspend issue
       copy:
         dest: /lib/systemd/system-sleep/bluetooth-issue
