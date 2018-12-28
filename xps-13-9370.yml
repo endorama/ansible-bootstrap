@@ -35,10 +35,13 @@
     - name: mongodb
     - name: chrome
     - name: dbeaver
+    - name: ulauncher
 
   tasks:
     - name: install tmuxinator
       command: gem install tmuxinator
+    - name: install teamocil # https://github.com/remiprev/teamocil
+      command: gem install teamocil
     - name: install pgcli # https://github.com/dbcli/pgcli
       pip:
         name: pgcli
