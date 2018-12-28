@@ -3,7 +3,9 @@
 - name: install key
   # command: wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -
   apt_key:
-    url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+    # fancy oracle has shitty servers
+    # url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+    data: "{{ lookup('file', 'oracle_vbox_2016.asc') }}"
     state: present  
 
 - name: add repo
