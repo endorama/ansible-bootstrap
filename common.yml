@@ -6,15 +6,17 @@
   tasks:
   - name: Install common dependencies
     apt:
-      name: '{{item}}'
+      name:
+      - htop
+      - powertop
+      - tree
+      - trash-cli
+      - jq
+      - nmap
+      - ack-grep
+      - traceroute
+      - xsel # support pbcopy
+      - xclip
+      - xprintidle
+      - myrepos
       state: present
-    with_items:
-    - htop
-    - powertop
-    - tree
-    - trash-cli
-    - jq
-    - nmap
-    - ack-grep
-    - traceroute
-    - xsel # support pbcopy

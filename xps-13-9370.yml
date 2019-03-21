@@ -29,10 +29,10 @@
     - name: virtualbox
       virtualbox_package_version: "5.2"
     - name: pritunl-client
-    - name: geerlingguy.php-versions
-    - name: geerlingguy.php
-    - name: geerlingguy.composer
-    - name: mongodb
+    # - name: geerlingguy.php-versions
+    # - name: geerlingguy.php
+    # - name: geerlingguy.composer
+    # - name: mongodb
     - name: chrome
     - name: dbeaver
     - name: ulauncher
