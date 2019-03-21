@@ -1,0 +1,12 @@
+---
+# tasks file for roles/ulauncher
+- name: install ulauncher repository
+  apt_repository:
+    repo: 'ppa:agornostal/ulauncher'
+    state: present
+    update_cache: yes
+
+- name: install ulauncher
+  apt:
+    name: ulauncher
+    state: present
