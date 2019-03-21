@@ -13,8 +13,7 @@
     state: present
     update_cache: yes
 
-
 - name: install pritunl
   apt:
-    package: pritunl-client-gtk
+    package: pritunl-client-electron
     state: present
