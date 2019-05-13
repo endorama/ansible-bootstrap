@@ -38,6 +38,10 @@
     - name: ulauncher
 
   tasks:
+    - name: install dev deps
+      apt:
+        - libevents-dev
+        - libreadline-dev
     - name: install tmuxinator
       command: gem install tmuxinator
     - name: install teamocil # https://github.com/remiprev/teamocil
