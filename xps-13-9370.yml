@@ -13,22 +13,28 @@
     php_enable_webserver: false
     composer_home_path: '/usr/local/composer'
 
+  pre_tasks:
+    - name: install dev deps
+      apt:
+        - libevents-dev
+        - libreadline-dev
+
   roles:
     - name: fonts
     # - name: plank
     - name: tlp
     # - name: hibernate # DOES NOT WORK!
-    - name: arc-theme
-    - name: moka-icon-theme
+    # - name: arc-theme
+    # - name: moka-icon-theme
     - name: kvm
     - name: docker
     - name: indicators
     # - name: minikube-driver-kvm2 # please before make it idempotent
-    - name: chromium
+    # - name: chromium
     - name: inotify-watchers
-    - name: virtualbox
-      virtualbox_package_version: "5.2"
-    - name: pritunl-client
+    # - name: virtualbox
+    #   virtualbox_package_version: "5.2"
+    # - name: pritunl-client
     # - name: geerlingguy.php-versions
     # - name: geerlingguy.php
     # - name: geerlingguy.composer
@@ -36,32 +42,66 @@
     - name: chrome
     - name: dbeaver
     - name: ulauncher
+    - name: sublimehq
 
   tasks:
     - name: install dev deps
       apt:
         - libevents-dev
         - libreadline-dev
-    - name: install tmuxinator
-      command: gem install tmuxinator
-    - name: install teamocil # https://github.com/remiprev/teamocil
-      command: gem install teamocil
-    - name: install pgcli # https://github.com/dbcli/pgcli
-      pip:
-        name: pgcli
-    - name: install mycli # https://github.com/dbcli/mycli
-      pip:
-        name: mycli
-    - name: fix bluetooth suspend issue
-      copy:
-        dest: /lib/systemd/system-sleep/bluetooth-issue
-        mode: 0755
-        content: |
-          #!/bin/sh
-          # https://bugs.launchpad.net/dell-sputnik/+bug/1766825/comments/26
-          if [ "$1" = "pre" ]; then
-            systemctl stop bluetooth && rmmod btusb
-          elif [ "$1" = "post" ]; then
-            modprobe btusb && systemctl start bluetooth
-          fi
+
+    - name: install packages
+      apt:
+        - trash-cli
+
+    - name: install gems
+      gem:
+        name: "{{item}}"
+        state: present
+      with_items:
+        - tmuxinator
+        - teamocil
+
+    - name: install snap apps
+      snap:
+        state: present
+        name:
+          - chromium
+          - fman
+          - gifcurry
+          - gnome-calculator
+          - http
+          - inkscape
+          - pall
+          - spotify
+          - superproductivity
+          - writefull
+    - name: install snap apps (classic)
+      snap:
+        classic: true
+        state: present
+        name:
+          - code
+          - fwupd
+          - slack
+          - tio
+
+    # - name: install pgcli # https://github.com/dbcli/pgcli
+    #   pip:
+    #     name: pgcli
+    # - name: install mycli # https://github.com/dbcli/mycli
+    #   pip:
+    #     name: mycli
+    # - name: fix bluetooth suspend issue
+    #   copy:
+    #     dest: /lib/systemd/system-sleep/bluetooth-issue
+    #     mode: 0755
+    #     content: |
+    #       #!/bin/sh
+    #       # https://bugs.launchpad.net/dell-sputnik/+bug/1766825/comments/26
+    #       if [ "$1" = "pre" ]; then
+    #         systemctl stop bluetooth && rmmod btusb
+    #       elif [ "$1" = "post" ]; then
+    #         modprobe btusb && systemctl start bluetooth
+    #       fi
 
