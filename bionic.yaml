@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  gather_facts: smart
+
+  tasks:
+    - name: install gawk (required by zplug)
+      # Ubuntu bionic comes with mawk
+      # see https://github.com/zplug/zplug/issues/506
+      apt:
+        name: gawk
+        state: present

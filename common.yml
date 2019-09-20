@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: localhost
   become: yes
   gather_facts: yes
 
@@ -18,5 +18,12 @@
       - xsel # support pbcopy
       - xclip
       - xprintidle
-      - myrepos
+      # - myrepos
       state: present
+
+  - debug: var=ansible_codename
+  - debug: var=ansible_lsb
+
+- name: import bionic fixes
+  import_playbook: bionic.yaml
+  when: ansible_lsb.codename == "bionic" or ansible_lsb.codename == "juno"
