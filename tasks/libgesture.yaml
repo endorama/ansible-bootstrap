@@ -1,0 +1,36 @@
+---
+
+- name: add user to input group
+  user:
+    name: "{{ lookup('env', 'USER') }}"
+    groups: input
+    append: true
+
+- name: install libgestures deps
+  apt:
+    name:
+      - xdotool
+      - wmctrl
+      - libinput-tools
+    state: present
+
+
+- name: get libinput-gestures
+  git:
+    # https://gitlab.com/cunidev/gestures
+    repo: http://github.com/bulletmark/libinput-gestures
+    dest: "{{ lookup('env','HOME') }}/.local/share/libinput-gestures"
+
+- name: install libinput-gestures
+  become: yes
+  command: ./libinput-gestures-setup install
+  args:
+    chdir: "{{ lookup('env','HOME') }}/.local/share/libinput-gestures"
+
+- name: autostart libinput-gestures
+  command: libinput-gestures-setup autostart
+  become: "{{ lookup('env', 'USER') }}"
+
+- name: restart libinput-gestures
+  command: libinput-gestures-setup restart
+  become: "{{ lookup('env', 'USER') }}"
