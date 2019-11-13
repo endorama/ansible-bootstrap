@@ -5,9 +5,14 @@
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
 
+- name: Get upstream codename (bionic, xenial, trusty etc.)
+  shell: lsb_release -cus || lsb_release -cs
+  changed_when: false
+  register: upstream_codename
+
 - name: add docker repository
   apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ upstream_codename.stdout_lines[0] }} stable
     state: present
     update_cache: yes
 
