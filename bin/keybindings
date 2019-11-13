@@ -1,3 +1,9 @@
-echo "[/org/gnome/desktop/wm/keybindings/]" > keybindings.conf
-dconf dump /org/gnome/desktop/wm/keybindings/ | tail -n +2 >> keybindings.conf
-dconf dump /org/gnome/settings-daemon/plugins/media-keys/ >> keybindings.conf
+#!/usr/bin/env bash
+
+set -eou pipefail
+
+filename="keybindings-$(lsb_release -is)-$(lsb_release -cs).conf"
+
+echo "[/org/gnome/desktop/wm/keybindings/]" > $filename
+dconf dump /org/gnome/desktop/wm/keybindings/ | tail -n +2 >> $filename
+dconf dump /org/gnome/settings-daemon/plugins/media-keys/ >> $filename
