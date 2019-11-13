@@ -2,16 +2,20 @@
 # tasks file for roles/kvm
 - name: install kvm and dependencies
   apt:
-    name: "{{item}}"
+    name:
+      - qemu-kvm
+      - libvirt-bin
+      - bridge-utils
     state: present
-  with_items:
-    - qemu-kvm 
-    - libvirt-bin 
-    - bridge-utils
 
-- name: install ubuntu-vm-builder 
+- name: install ubuntu-vm-builder
   apt:
-    name: ubuntu-vm-builder 
+    name: ubuntu-vm-builder
+    state: present
+
+- name: ensure libvirtd group exists
+  group:
+    name: libvirtd
     state: present
 
 - name: add user to libvirtd group
