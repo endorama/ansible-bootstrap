@@ -16,8 +16,9 @@
   pre_tasks:
     - name: install dev deps
       apt:
-        - libevents-dev
-        - libreadline-dev
+        name:
+          # - libevents-dev
+          - libreadline-dev
 
   roles:
     - name: fonts
@@ -45,14 +46,16 @@
     - name: sublimehq
 
   tasks:
-    - name: install dev deps
-      apt:
-        - libevents-dev
-        - libreadline-dev
+    # - include: tasks/papirus-icon-theme.yaml
+    # - include: tasks/elementary-tweaks.yaml
+    # - include: tasks/pritunl-client-electron.yaml
+    - include: tasks/gcloud-sdk.yaml
+    - include: tasks/libgesture.yaml
+      tags: [gestures]
 
-    - name: install packages
-      apt:
-        - trash-cli
+    # - name: install packages
+    #   apt:
+    #     name: []
 
     - name: install gems
       gem:
