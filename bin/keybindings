@@ -1,0 +1,3 @@
+echo "[/org/gnome/desktop/wm/keybindings/]" > keybindings.conf
+dconf dump /org/gnome/desktop/wm/keybindings/ | tail -n +2 >> keybindings.conf
+dconf dump /org/gnome/settings-daemon/plugins/media-keys/ >> keybindings.conf
