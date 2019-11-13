@@ -3,6 +3,8 @@ Role Name
 
 A brief description of the role goes here.
 
+https://linrunner.de/en/tlp/docs/tlp-configuration.html
+
 Requirements
 ------------
 

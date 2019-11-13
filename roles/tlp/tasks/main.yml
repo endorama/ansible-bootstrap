@@ -8,11 +8,10 @@
 
 - name: install tlp
   apt:
-    name: "{{item}}"
+    name:
+      - tlp
+      - tlp-rdw
     state: present
-  with_items:
-    - tlp
-    - tlp-rdw
 
 - name: start tlp service
   service:
