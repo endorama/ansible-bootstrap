@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cp /etc/default/tlp roles/tlp/files/
