@@ -1,0 +1,11 @@
+---
+# https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
+
+- apt_repository:
+    repo: ppa:papirus/papirus
+    state: present
+    update_cache: yes
+
+- apt:
+    name: papirus-icon-theme
+    state: present

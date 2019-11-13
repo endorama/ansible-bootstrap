@@ -1,0 +1,11 @@
+---
+# https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
+
+- apt_repository:
+    repo: ppa:philip.scott/elementary-tweaks
+    state: present
+    update_cache: yes
+
+- apt:
+    name: elementary-tweaks
+    state: present

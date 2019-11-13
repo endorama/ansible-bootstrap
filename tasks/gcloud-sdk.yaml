@@ -1,0 +1,19 @@
+---
+
+- name: add pritunl apt key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    keyring: /usr/share/keyrings/cloud.google.gpg
+    state: present
+
+- name: add gcloud repo
+  apt_repository:
+    repo: "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main"
+    filename: google-cloud-sdk
+    state: present
+    update_cache: true
+
+- name: install gcloud SDK
+  apt:
+    name: google-cloud-sdk
+    state: present
