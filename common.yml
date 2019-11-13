@@ -19,6 +19,8 @@
       - xclip
       - xprintidle
       # - myrepos
+      - zlib1g # generally available
+      - zlib1g-dev # believe me, you'll need this
       state: present
 
   - debug: var=ansible_codename
