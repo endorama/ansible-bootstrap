@@ -1,0 +1,11 @@
+---
+- name: add fish-shell repo
+  apt_repository:
+    repo: ppa:fish-shell/release-3
+    state: present
+    update_cache: yes
+
+- name: install fish-shell
+  apt:
+    package: fish
+    state: present

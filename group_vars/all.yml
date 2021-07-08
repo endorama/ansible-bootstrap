@@ -1,1 +1,9 @@
 ---
+default_flatpaks: []
+default_fonts: []
+
+local_flatpaks: []
+local_fonts: []
+
+os_flatpaks: []
+os_fonts: []

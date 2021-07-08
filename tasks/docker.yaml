@@ -1,0 +1,13 @@
+---
+
+- name: add docker system group
+  shell: addgroup --system docker
+- name: add user to docker group
+  shell: "adduser {{ whoami }} docker"
+- name: disable docker snap
+  shell: snap disable docker
+- name: enable docker snap
+  shell: snap enable docker
+
+- ansible.builtin.debug:
+    msg: To change shell config and use docker run 'newgrp docker'

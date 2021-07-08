@@ -1,0 +1,26 @@
+---
+
+- block:
+    - name: 
+      apt:
+        name: libpugixml1v5
+        state: present
+
+    - get_url:
+        url: https://github.com/JoseExposito/touchegg/releases/download/2.0.9/touchegg_2.0.9_amd64.deb
+        dest: /tmp/touchegg.deb
+
+    - apt:
+        deb: /tmp/touchegg.deb
+  when: ansible_lsb.codename == "hera"
+
+# PPA doesn't have packages for bionic https://github.com/JoseExposito/touchegg/issues/451#issuecomment-848017827
+# - name: add touchegg repo
+#   apt_repository:
+#     repo: ppa:touchegg/stable
+#     update_cache: yes
+
+# - name: install touchegg
+#   apt:
+#     name: touchegg
+#     state: present

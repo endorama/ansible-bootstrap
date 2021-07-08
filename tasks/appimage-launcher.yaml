@@ -1,0 +1,10 @@
+---
+- name: improve AppImage integration
+  block:
+    - name: download AppImageLauncher
+      get_url:
+        url: https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher_2.2.0-travis995.0f91801.bionic_amd64.deb
+        dest: /tmp/appimagelauncher.deb
+    - name: install deb
+      apt:
+        deb: /tmp/appimagelauncher.deb

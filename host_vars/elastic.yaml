@@ -1,0 +1,29 @@
+---
+whoami: endorama
+
+local_flatpaks:
+  - com.github.joseexposito.touche
+
+snaps:
+  - 1password
+  - chezmoi
+  - chromium
+  - docker
+  - fman
+  - gifcurry
+  - gnome-calculator
+  - http
+  - inkscape
+  - pall
+  - spotify
+  - starship
+  - superproductivity
+
+classic_snaps:
+  - code
+  - fwupd
+  - nvim
+  # - obs-studio # not really supported
+  - slack
+  - tio
+  - tmux

@@ -1,0 +1,10 @@
+---
+- name: install spideroak one
+  block:
+    - name: download deb
+      get_url:
+        url: https://spideroak.com/release/spideroak/deb_x64
+        dest: /tmp/spideroak.deb
+    - name: install deb
+      apt:
+        deb: /tmp/spideroak.deb

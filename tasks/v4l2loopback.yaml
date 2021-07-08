@@ -1,0 +1,17 @@
+---
+- name: create module autoload file
+  copy: 
+    content: v4l2loopback
+    dest: /etc/modules-load.d/v4l2loopback.conf
+  register: v4l2loopback_module_autoload
+
+- name: update initramfs to autoload module
+  shell: update-initramfs -u
+  when: v4l2loopback_module_autoload.changed
+
+- name: create v4l2loopback configuration file
+  copy:
+    content: 
+      options v4l2loopback video_nr=3
+      options v4l2loopback card_label="virtual camera 3"
+    dest: /etc/modprobe.d/v4l2loopback.conf

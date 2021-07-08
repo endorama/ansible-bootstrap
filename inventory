@@ -1,13 +1,18 @@
-[all]
+elastic                 ansible_connection=local
+etenani-XPS-13-9380     ansible_connection=local
 tunix		            ansible_connection=local
-etenani-XPS-13-9380 ansible_connection=local
 
 [laptop]
 tunix
 etenani-XPS-13-9380
+elastic
 
 [personal]
 tunix
 
 [work]
 etenani-XPS-13-9380
+elastic
+
+[elementary]
+elastic

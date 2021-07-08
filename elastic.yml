@@ -1,0 +1,57 @@
+- import_playbook: common.yml
+- import_playbook: laptop.yaml
+- import_playbook: elementary.yaml
+
+- hosts: elastic
+  become: yes
+  gather_facts: smart
+
+  pre_tasks:
+
+  roles:
+    - name: fonts
+      vars: 
+        fonts: "{{ default_fonts + os_fonts + local_fonts }}"
+    - name: ulauncher
+    - name: sublimehq
+    
+  tasks:
+    - include: tasks/appimage-launcher.yaml
+    - include: tasks/caffeine.yaml
+    - include: tasks/dconf-load.yaml
+    - include: tasks/docker.yaml
+    - include: tasks/fish-shell.yaml
+    - include: tasks/flatpaks.yaml
+      vars:
+        flatpaks: "{{ default_flatpaks + os_flatpaks + local_flatpaks }}"
+    # - include: tasks/libgesture.yaml
+    - include: tasks/neovim.yaml
+    
+    - include: tasks/snaps.yaml
+    - name: connect 1password snap to password-manager-service
+      shell: snap connect 1password:password-manager-service
+
+    - include: tasks/spidearoak-one.yaml
+    - include: tasks/touchegg.yaml
+    - include: tasks/zoom.yaml
+    - include: tasks/nerd-fonts.yaml
+
+    - include: tasks/elementary/hera/v4l2loopback.yaml
+    - include: tasks/v4l2loopback.yaml
+    - include: tasks/obs-studio.yaml
+
+    - include: tasks/nodejs-lts.yaml
+    - include: tasks/playerctl.yaml
+
+    # indicators
+    # - name: install indicator-multiload
+    #   apt:
+    #     name: indicator-multiload
+    #     state: present
+
+    # - name: install clipit
+    #   apt:
+    #     name: clipit
+    #     state: present
+
+  post_tasks: []

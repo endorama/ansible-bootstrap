@@ -1,0 +1,12 @@
+---
+
+- name: add PPA
+  apt_repository:
+    repo: ppa:neovim-ppa/stable
+    state: present
+    update_cache: true
+
+- name: install neovim
+  apt:
+    name: neovim
+    state: present

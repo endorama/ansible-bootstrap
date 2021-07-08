@@ -1,0 +1,7 @@
+---
+- hosts: laptop
+  become: yes
+  gather_facts: smart
+
+  roles:
+    - name: tlp

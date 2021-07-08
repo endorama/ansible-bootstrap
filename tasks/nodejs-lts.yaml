@@ -1,0 +1,12 @@
+---
+
+- get_url:
+    url: https://deb.nodesource.com/setup_lts.x
+    dest: /tmp/nodejs-lts.x
+    mode: u=rx,g=r,o=r
+    
+- shell: /tmp/nodejs-lts.x
+
+- apt:
+    name: nodejs
+    state: present

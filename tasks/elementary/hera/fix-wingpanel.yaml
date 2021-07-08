@@ -1,0 +1,36 @@
+---
+- name: fix wingpanel indicators
+  # https://github.com/sprite-1/elementary-patches/tree/master/system/show_3rd_party_system_tray_icons
+  block:
+    - name: fix indicator-application
+      lineinfile:
+        path: /etc/xdg/autostart/indicator-application.desktop
+        regexp: ^OnlyShowIn=(?!.*Pantheon.*)(.*)
+        line: 'OnlyShowIn=\1Pantheon;'
+        backrefs: true
+    
+    - name: 
+      get_url:
+        url: http://ppa.launchpad.net/elementary-os/stable/ubuntu/pool/main/w/wingpanel-indicator-ayatana/wingpanel-indicator-ayatana_2.0.3+r27+pkg17~ubuntu0.4.1.1_amd64.deb
+        dest: /tmp/wingpanel-indicator-ayatana.deb
+        mode: '0400'
+    
+    - name: install patched wingpanel-indicator-ayatana
+      apt:
+        deb: /tmp/wingpanel-indicator-ayatana.deb
+    
+    # https://github.com/sprite-1/elementary-patches/tree/master/design/decrease_the_gap_between_system_tray_icons
+    - name: reduce space between icons
+      copy:
+        content: |
+          .composited-indicator {
+            padding: 0px;
+          }
+        dest: /usr/share/themes/elementary/gtk-3.0/tweaks.css
+    
+    - name: hide nm-applet
+      lineinfile:
+        path: /etc/xdg/autostart/nm-applet.desktop
+        regexp: ^NotShowIn=(?!.*Pantheon.*)(.*)
+        line: 'NotShowIn=\1Pantheon;'
+        backrefs: true

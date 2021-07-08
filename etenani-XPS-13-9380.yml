@@ -6,7 +6,8 @@
   gather_facts: smart
 
   vars_files:
-    - secret_vars/xps-13-9370.yaml
+    # lost password
+    #- secret_vars/xps-13-9370.yaml
 
   vars:
     php_version: '7.1'

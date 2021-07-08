@@ -1,0 +1,15 @@
+---
+
+- block:
+    - stat:
+        path: "{{ host_file }}"
+      register: dconf_host
+
+    - name: load host dedicated dconf
+      shell: "dconf load / < {{ host_file }}"
+      when: dconf_host.stat.exists
+
+  vars:
+    host_file: "dconf/{{ inventory_hostname }}.ini"
+  
+  tags: [dconf, restore, load]

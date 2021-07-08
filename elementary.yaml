@@ -1,0 +1,20 @@
+---
+- hosts: elementary
+  become: yes
+  gather_facts: smart
+  
+  pre_tasks: 
+    - include: tasks/elementary/hera/fix-wingpanel.yaml
+      when: ansible_lsb.codename == "hera"
+    - include: tasks/elementary/hera/fix-emojis.yaml
+      when: ansible_lsb.codename == "hera"
+
+  roles: []
+
+  tasks:
+    # not supported anymore
+    # - include: tasks/elementary-plus.yaml
+    - include: tasks/elementary/elementary-tweaks.yaml
+    - include: tasks/papirus-icon-theme.yaml
+
+  post_tasks: []

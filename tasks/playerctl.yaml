@@ -1,0 +1,12 @@
+---
+- name: install playerctl
+  block:
+    - name: download deb
+      get_url:
+        url: "https://github.com/altdesktop/playerctl/releases/download/v{{ playerctl_version }}/playerctl-{{ playerctl_version }}_amd64.deb"
+        dest: /tmp/playerctl.deb
+    - name: install deb
+      apt:
+        deb: /tmp/playerctl.deb
+  vars:
+    playerctl_version: 2.3.1

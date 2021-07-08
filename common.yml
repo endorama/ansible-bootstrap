@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: all
   become: yes
   gather_facts: yes
 
@@ -7,12 +7,13 @@
   - name: Install common dependencies
     apt:
       name:
+      - build-essential
       - htop
       - powertop
       - tree
       - trash-cli
-      - jq
-      - nmap
+      #- jq
+      #- nmap
       - ack-grep
       - traceroute
       - xsel # support pbcopy
@@ -20,7 +21,12 @@
       - xprintidle
       # - myrepos
       - zlib1g # generally available
-      - zlib1g-dev # believe me, you'll need this
+      # believe me, you'll need these
+      - libbz2-dev
+      - libffi-dev
+      - libreadline-dev
+      - libssl-dev
+      - zlib1g-dev 
       state: present
 
   - debug: var=ansible_codename

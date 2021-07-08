@@ -1,0 +1,15 @@
+---
+
+- name:
+  file:
+    path: "/home/{{ whoami }}/code/github.com/ryanoasis/nerd-fonts.git"
+    state: directory
+
+- git:
+    repo: 'https://github.com/ryanoasis/nerd-fonts.git'
+    dest: "/home/{{ whoami }}/code/github.com/ryanoasis/nerd-fonts.git"
+    depth: 1
+
+- shell: "/home/{{ whoami }}/code/github.com/ryanoasis/nerd-fonts/install.sh {{ item }}"
+  with_items:
+    - Hack

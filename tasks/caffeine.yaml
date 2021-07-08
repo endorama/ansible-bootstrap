@@ -1,0 +1,11 @@
+---
+- name: add caffeine repo
+  apt_repository:
+    repo: ppa:caffeine-developers/ppa
+    state: present
+    update_cache: yes
+
+- name: install caffeine
+  apt:
+    package: caffeine
+    state: present

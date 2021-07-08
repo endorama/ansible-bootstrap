@@ -1,0 +1,5 @@
+---
+os_fonts:
+  # https://github.com/sprite-1/elementary-patches/tree/master/system/fix_square_text_for_unicode_content
+  - name: Obscure unicode
+    package: ttf-ancient-fonts

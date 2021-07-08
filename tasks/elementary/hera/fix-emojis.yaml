@@ -1,0 +1,41 @@
+---
+- name: fix emojis
+  block:
+    - name: ensure folder exists
+      file:
+        state: directory
+        path: ~/.config/fontconfig/conf.d
+      become_user: "{{ whoami }}"
+    
+    - name: add font config
+      copy:
+        content: |
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+          <fontconfig>
+          <alias>
+            <family>serif</family>
+            <prefer>
+            <family>Noto Color Emoji</family>
+            </prefer>
+          </alias>
+          <alias>
+            <family>sans-serif</family>
+            <prefer>
+            <family>Noto Color Emoji</family>
+            </prefer>
+          </alias>
+          <alias>
+            <family>monospace</family>
+            <prefer>
+            <family>Noto Color Emoji</family>
+            </prefer>
+          </alias>
+          </fontconfig>
+        dest: ~/.config/fontconfig/conf.d/01-emoji.conf
+      become_user: "{{ whoami }}"
+      register: fontconfig
+    
+    - name: refresh font cache
+      shell: fc-cache -f -v
+      when: fontconfig.changed

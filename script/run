@@ -7,8 +7,8 @@ set -e
 cd "$(dirname "$0")/.."
 
 hostname="${1:-$(hostname)}"
-username="$(whoami)"
 
-ansible-playbook -i inventory "$hostname.yml" -K --limit "$hostname" \
-	--ask-vault-pass \
-	--extra-vars "myuser=$username"
+echo "$hostname"
+ansible-playbook -i inventory "$hostname.yml" \
+  -K --limit "$hostname" \
+  -vv

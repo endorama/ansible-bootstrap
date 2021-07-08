@@ -1,0 +1,36 @@
+---
+- name: v4l2loopback kernel module
+  block:
+  - name: download
+    get_url:
+      url: "https://github.com/umlaeute/v4l2loopback/archive/v{{ v4l2loopback_version }}.tar.gz"
+      dest: /tmp/v4l2loopback.tar.gz
+  
+  - name: extract
+    unarchive:
+      src: /tmp/v4l2loopback.tar.gz
+      dest: /usr/src
+
+  - shell: |
+      dkms status -m v4l2loopback -k {{ ansible_kernel }} | jq -R 'split(",") | map(ltrimstr(" ")) | {name: .[0], version: .[1], kernel: .[2], arch: (.[3] | split(":") | .[0]), status: (.[3] | split(": ") | .[1]) }'
+    register: dkms_status
+  - debug: var=dkms_status
+
+  - set_fact:
+      v4l2loopback_mod_status: "{{ dkms_status.stdout | from_json }}"
+  - debug: var=v4l2loopback_mod_status
+
+  - name: add module
+    shell: "dkms add -m v4l2loopback -v {{ v4l2loopback_version }}"
+    when: v4l2loopback_mod_status.version != v4l2loopback_version and v4l2loopback_mod_status.status != "installed"
+
+  - name: build module
+    shell: "dkms build -m v4l2loopback -v {{ v4l2loopback_version }}"
+    when: v4l2loopback_mod_status.version != v4l2loopback_version and v4l2loopback_mod_status.status != "installed"
+
+  - name: install module
+    shell: "dkms install -m v4l2loopback -v {{ v4l2loopback_version }}"
+    when: v4l2loopback_mod_status.version != v4l2loopback_version and v4l2loopback_mod_status.status != "installed"
+
+  vars:
+    v4l2loopback_version: 0.12.5

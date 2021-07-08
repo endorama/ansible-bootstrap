@@ -1,0 +1,9 @@
+---
+- name: add elementary-plus repo
+  apt_repository:
+    repo: ppa:cybre/elementaryplus
+    update_cache: yes
+- name: install elementaryplus
+  apt:
+    name: elementaryplus
+    state: present

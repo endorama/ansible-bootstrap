@@ -1,0 +1,10 @@
+---
+- name: install zoom
+  block:
+    - name: download deb
+      get_url:
+        url: https://zoom.us/client/latest/zoom_amd64.deb
+        dest: /tmp/zoom.deb
+    - name: install deb
+      apt:
+        deb: /tmp/zoom.deb
