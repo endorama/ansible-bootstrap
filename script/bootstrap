@@ -13,4 +13,7 @@ sudo apt-get install software-properties-common
 echo "** Installing ansible..."
 sudo apt-add-repository -y ppa:ansible/ansible
 sudo apt-get -qq update
-sudo apt-get install -y ansible
+sudo apt-get install -y ansible-base
+
+ansible-galaxy collection install -r requirements.yml -p collections/community
+ansible-galaxy role install -r requirements.yml -p roles/commmunity

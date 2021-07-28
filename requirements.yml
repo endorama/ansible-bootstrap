@@ -1,0 +1,8 @@
+roles:
+  - src: geerlingguy.php-versions
+  - src: geerlingguy.php
+  - src: geerlingguy.composer
+
+collections:
+  - ansible.posix
+  - community.general
