@@ -1,6 +1,5 @@
 *.retry
-roles/geerlingguy.composer/
-roles/geerlingguy.php-versions/
-roles/geerlingguy.php/
+collections/community/
+roles/commmunity/
 ansible-bootstrap.sublime-workspace
 .vscode
