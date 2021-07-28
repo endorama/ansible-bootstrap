@@ -4,7 +4,6 @@
 
 - hosts: elastic
   become: yes
-  gather_facts: smart
 
   pre_tasks:
 

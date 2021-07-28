@@ -1,7 +1,6 @@
 ---
 - hosts: elementary
   become: yes
-  gather_facts: smart
   
   pre_tasks: 
     - include: tasks/elementary/hera/fix-wingpanel.yaml

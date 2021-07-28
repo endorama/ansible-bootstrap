@@ -1,6 +1,5 @@
 ---
 - hosts: localhost
-  gather_facts: smart
 
   tasks:
     - name: install gawk (required by zplug)
