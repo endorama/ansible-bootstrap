@@ -42,6 +42,11 @@
     - include: tasks/nodejs-lts.yaml
     - include: tasks/playerctl.yaml
 
+    - ansible.posix.sysctl:
+        name: fs.inotify.max_user_watches
+        value: '524288'
+        state: present
+
     # indicators
     # - name: install indicator-multiload
     #   apt:
