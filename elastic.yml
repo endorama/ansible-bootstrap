@@ -32,6 +32,7 @@
         flatpaks: "{{ default_flatpaks + os_flatpaks + local_flatpaks }}"
     # - include: tasks/libgesture.yaml
     - include: tasks/neovim.yaml
+    - include: tasks/apps/slimbook-battery.yaml
     
     - include: tasks/snaps.yaml
     - name: connect 1password snap to password-manager-service
