@@ -19,7 +19,7 @@
       vars: 
         fonts: "{{ default_fonts + os_fonts + local_fonts }}"
     - name: ulauncher
-    - name: sublimehq
+    # - name: sublimehq
     
   tasks:
     - include: tasks/appimage-launcher.yaml
