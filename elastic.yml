@@ -6,6 +6,13 @@
   become: yes
 
   pre_tasks:
+    # required for neovim plugins
+    - name: install python devel
+      apt:
+        name: 
+          - python-dev
+          - python3-dev
+        state: present
 
   roles:
     - name: fonts
