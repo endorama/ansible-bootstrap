@@ -1,0 +1,4 @@
+- name: install shutter package
+  apt:
+    name: shutter
+    state: present
