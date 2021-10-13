@@ -1,0 +1,11 @@
+---
+- name: add PPA
+  apt_repository:
+    repo: ppa:slimbook/slimbook
+    state: present
+    update_cache: true
+
+- name: install
+  apt:
+    name: slimbookbattery
+    state: present
