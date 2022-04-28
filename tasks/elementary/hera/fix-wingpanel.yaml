@@ -1,6 +1,7 @@
 ---
 - name: fix wingpanel indicators
   # https://github.com/sprite-1/elementary-patches/tree/master/system/show_3rd_party_system_tray_icons
+  # https://github.com/Lafydev/wingpanel-indicator-ayatana
   block:
     - name: fix indicator-application
       lineinfile:
